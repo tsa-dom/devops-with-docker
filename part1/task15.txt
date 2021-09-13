@@ -1,0 +1,5 @@
+Docker hub
+https://hub.docker.com/r/tsadom/django-react
+
+Github
+https://github.com/tsa-dom/django-react

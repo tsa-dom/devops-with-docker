@@ -1,0 +1,23 @@
+First terminal:
+$ sudo docker run -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+Input website:
+
+Second terminal:
+$ sudo docker ps
+CONTAINER ID   IMAGE     COMMAND                   CREATED          STATUS          PORTS     NAMES
+0166959768ab   ubuntu    "sh -c 'echo \"Input …"   31 seconds ago   Up 30 seconds             mystifying_euclid
+$ sudo docker exec -it mystifying_euclid bash
+root@0166959768ab:/# apt-get update
+...
+root@0166959768ab:/# apt-get install curl -y
+
+First terminal:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://www.helsinki.fi/">here</a>.</p>
+</body></html>
