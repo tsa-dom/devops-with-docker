@@ -1,0 +1,34 @@
+version: '3.9'
+
+services: 
+  frontend:
+    build: ./ml-kurkkumopo-frontend
+    ports: 
+      - 3000:3000
+
+  backend:
+    build: ./ml-kurkkumopo-backend
+    ports:
+      - 5000:5000
+    volumes: 
+      - model:/src/model
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 1024M
+
+  training:
+    build: ./ml-kurkkumopo-training
+    volumes: 
+      - model:/src/model
+      - images:/src/imgs
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 1024M
+
+volumes: 
+  model:
+  images:
