@@ -1,0 +1,4 @@
+Here are commands to run:
+
+docker build . -t builder
+docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker builder

@@ -1,0 +1,3 @@
+Made on the basis of repository:
+
+github.com/tsa-dom/django-react

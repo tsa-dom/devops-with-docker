@@ -1,0 +1,21 @@
+FROM node:16-alpine
+
+EXPOSE 5000
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+ENV REACT_APP_BACKEND_URL=http://localhost/api/
+
+RUN npm ci --production && \
+    npm run build && \
+    npm install -g serve && \
+    addgroup -S appgroup && \
+    adduser -S appuser -G appgroup && \
+    rm -rf src && \
+    rm -rf public && \
+    rm -rf node_modules
+USER appuser
+
+CMD ["serve", "-s", "-l", "5000", "build"]
